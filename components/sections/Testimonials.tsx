@@ -1,5 +1,6 @@
 import StarIcon from "../icons/StarIcon";
 import TestimonialCard, { type Testimonial } from "./TestimonialCard";
+import FadeIn from "../ui/FadeIn";
 
 const testimonials: Testimonial[] = [
   {
@@ -47,33 +48,39 @@ export default function Testimonials() {
     <section className="relative w-full px-6 lg:px-30 pb-24">
 
       {/* Header */}
-      <div className="relative z-10 flex items-center justify-between mb-10">
-        <p className="font-manrope font-semibold text-[13px] uppercase tracking-widest text-white/25">
-          What travelers say
-        </p>
-        <div className="hidden sm:flex items-center gap-1 text-yellow-400">
-          {[1, 2, 3, 4, 5].map((i) => (
-            <StarIcon key={i} />
-          ))}
-          <span className="font-manrope text-[12px] text-white/30 ml-3 tracking-wide">
-            5.0 · Verified
-          </span>
+      <FadeIn>
+        <div className="relative z-10 flex items-center justify-between mb-10">
+          <p className="font-manrope font-semibold text-[13px] uppercase tracking-widest text-white/25">
+            What travelers say
+          </p>
+          <div className="hidden sm:flex items-center gap-1 text-yellow-400">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <StarIcon key={i} />
+            ))}
+            <span className="font-manrope text-[12px] text-white/30 ml-3 tracking-wide">
+              5.0 · Verified
+            </span>
+          </div>
         </div>
-      </div>
+      </FadeIn>
 
       {/* Grid */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
 
         {/* Left — 2 stacked cards */}
         <div className="flex flex-col gap-4">
-          {rest.map((t) => (
-            <TestimonialCard key={t.name} testimonial={t} />
+          {rest.map((t, i) => (
+            <FadeIn key={t.name} delay={i * 0.1}>
+              <TestimonialCard testimonial={t} />
+            </FadeIn>
           ))}
         </div>
 
         {/* Right — featured card, staggered */}
         <div className="lg:mt-16">
-          <TestimonialCard testimonial={featured} featured />
+          <FadeIn delay={0.2}>
+            <TestimonialCard testimonial={featured} featured />
+          </FadeIn>
         </div>
       </div>
     </section>

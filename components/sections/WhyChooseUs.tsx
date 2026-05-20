@@ -1,6 +1,7 @@
 import { type ReactNode } from "react";
 import ShieldCheckIcon from "../icons/ShieldCheckIcon";
 import ZapIcon from "../icons/ZapIcon";
+import FadeIn from "../ui/FadeIn";
 import TagIcon from "../icons/TagIcon";
 import HeadphonesIcon from "../icons/HeadphonesIcon";
 
@@ -58,27 +59,30 @@ export default function WhyChooseUs() {
 
       <div className="relative z-10">
       {/* Header */}
-      <header className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
-        <div>
-          <p className="font-manrope font-semibold text-[13px] uppercase tracking-widest text-purple-400 mb-3">
-            Why travelers choose us
+      <FadeIn>
+        <header className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
+          <div>
+            <p className="font-manrope font-semibold text-[13px] uppercase tracking-widest text-purple-400 mb-3">
+              Why travelers choose us
+            </p>
+            <h2 className="font-instrument-serif text-white text-4xl lg:text-[56px] leading-[1.1] max-w-lg">
+              Everything you need, nothing you don't
+            </h2>
+          </div>
+          <p className="font-inter text-[16px] text-white/50 leading-relaxed max-w-sm lg:text-right">
+            We built Future around one idea: booking a stay should feel as good as the stay itself.
           </p>
-          <h2 className="font-instrument-serif text-white text-4xl lg:text-[56px] leading-[1.1] max-w-lg">
-            Everything you need, nothing you don't
-          </h2>
-        </div>
-        <p className="font-inter text-[16px] text-white/50 leading-relaxed max-w-sm lg:text-right">
-          We built Future around one idea: booking a stay should feel as good as the stay itself.
-        </p>
-      </header>
+        </header>
+      </FadeIn>
 
       {/* Feature grid */}
       <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 list-none p-0 m-0">
-        {features.map((feature) => (
+        {features.map((feature, i) => (
           <li
             key={feature.title}
             className="group relative flex flex-col p-6 rounded-2xl bg-[#0e0a1f] border border-white/[0.07] hover:border-purple-500/30 transition-all duration-300 overflow-hidden"
           >
+          <FadeIn delay={i * 0.08}>
             {/* Subtle corner glow */}
             <div
               aria-hidden
@@ -118,6 +122,7 @@ export default function WhyChooseUs() {
                 {feature.statLabel}
               </p>
             </div>
+          </FadeIn>
           </li>
         ))}
       </ul>

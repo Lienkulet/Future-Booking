@@ -1,5 +1,6 @@
 import PropertyCard, { type Property } from "../ui/PropertyCard";
 import ArrowRightIcon from "../icons/ArrowRightIcon";
+import FadeIn from "../ui/FadeIn";
 
 const properties: Property[] = [
   {
@@ -51,30 +52,34 @@ export default function FeaturedStays() {
   return (
     <section className="relative w-full px-6 lg:px-30 pt-24 pb-20">
       {/* Header */}
-      <header className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-        <div>
-          <p className="font-manrope font-semibold text-[13px] uppercase tracking-widest text-purple-400 mb-3">
-            Hand-picked for you
-          </p>
-          <h2 className="font-instrument-serif text-white text-4xl lg:text-[56px] leading-[1.1]">
-            Featured Stays
-          </h2>
-        </div>
+      <FadeIn>
+        <header className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+          <div>
+            <p className="font-manrope font-semibold text-[13px] uppercase tracking-widest text-purple-400 mb-3">
+              Hand-picked for you
+            </p>
+            <h2 className="font-instrument-serif text-white text-4xl lg:text-[56px] leading-[1.1]">
+              Featured Stays
+            </h2>
+          </div>
 
-        <a
-          href="#"
-          className="flex items-center gap-2 font-manrope font-semibold text-[14px] text-purple-400 hover:text-purple-300 transition-colors shrink-0 mb-1"
-        >
-          View all properties
-          <ArrowRightIcon />
-        </a>
-      </header>
+          <a
+            href="#"
+            className="flex items-center gap-2 font-manrope font-semibold text-[14px] text-purple-400 hover:text-purple-300 transition-colors shrink-0 mb-1"
+          >
+            View all properties
+            <ArrowRightIcon />
+          </a>
+        </header>
+      </FadeIn>
 
       {/* Grid */}
       <ul className="relative z-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 list-none p-0 m-0">
-        {properties.map((property) => (
+        {properties.map((property, i) => (
           <li key={property.id}>
-            <PropertyCard property={property} />
+            <FadeIn delay={i * 0.1}>
+              <PropertyCard property={property} />
+            </FadeIn>
           </li>
         ))}
       </ul>

@@ -2,6 +2,7 @@ import SearchIcon from "../icons/SearchIcon";
 import CalendarIcon from "../icons/CalendarIcon";
 import KeyIcon from "../icons/KeyIcon";
 import StarsVideo from "../ui/StarsVideo";
+import FadeIn from "../ui/FadeIn";
 
 const steps = [
   {
@@ -32,14 +33,16 @@ export default function HowItWorks() {
     <section className="relative w-full px-6 lg:px-30 pb-24">
 
       {/* Header */}
-      <header className="relative z-10 text-center mb-16">
-        <p className="font-manrope font-semibold text-[13px] uppercase tracking-widest text-purple-400 mb-3">
-          Simple as 1 – 2 – 3
-        </p>
-        <h2 className="font-instrument-serif text-white text-4xl lg:text-[56px] leading-[1.1]">
-          How It Works
-        </h2>
-      </header>
+      <FadeIn>
+        <header className="relative z-10 text-center mb-16">
+          <p className="font-manrope font-semibold text-[13px] uppercase tracking-widest text-purple-400 mb-3">
+            Simple as 1 – 2 – 3
+          </p>
+          <h2 className="font-instrument-serif text-white text-4xl lg:text-[56px] leading-[1.1]">
+            How It Works
+          </h2>
+        </header>
+      </FadeIn>
 
       {/* Steps */}
       <ol className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 list-none p-0 m-0">
@@ -53,8 +56,9 @@ export default function HowItWorks() {
           }}
         />
 
-        {steps.map((step) => (
+        {steps.map((step, i) => (
           <li key={step.number} className="flex flex-col items-center text-center">
+            <FadeIn delay={i * 0.15} className="flex flex-col items-center">
             {/* Icon ring */}
             <div className="relative mb-8">
               <div
@@ -84,6 +88,7 @@ export default function HowItWorks() {
             <p className="font-inter text-[15px] text-white/50 leading-relaxed max-w-70">
               {step.description}
             </p>
+            </FadeIn>
           </li>
         ))}
       </ol>

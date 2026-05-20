@@ -1,4 +1,5 @@
 import ArrowRightIcon from "../icons/ArrowRightIcon";
+import FadeIn from "../ui/FadeIn";
 
 const stats = [
   { value: "10,000+", label: "travelers" },
@@ -37,16 +38,16 @@ export default function CTABanner() {
 
       <div className="relative z-10 flex flex-col lg:flex-row lg:items-end gap-16 lg:gap-24">
         {/* Left — headline */}
-        <div className="flex-1">
+        <FadeIn className="flex-1">
           <h2 className="font-instrument-serif text-white text-5xl lg:text-7xl xl:text-[88px] leading-[1.05] max-w-2xl">
             Your next<br />
             adventure<br />
             <em className="italic text-purple-400">starts here.</em>
           </h2>
-        </div>
+        </FadeIn>
 
         {/* Right — stats + CTAs */}
-        <div className="flex flex-col gap-10 lg:max-w-sm w-full">
+        <FadeIn delay={0.15} className="flex flex-col gap-10 lg:max-w-sm w-full">
           {/* Stats row */}
           <div className="flex items-center gap-8 border-b border-white/10 pb-10">
             {stats.map((s) => (
@@ -76,9 +77,8 @@ export default function CTABanner() {
               Get Started
             </button>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
 }
-
